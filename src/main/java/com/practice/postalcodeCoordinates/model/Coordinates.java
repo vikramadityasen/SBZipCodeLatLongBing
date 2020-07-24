@@ -1,112 +1,116 @@
 package com.practice.postalcodeCoordinates.model;
 
-import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({ "authenticationResultCode", "brandLogoUri", "copyright", "resourceSets", "statusCode",
+		"statusDescription", "traceId" })
 public class Coordinates {
 
-	@Id
-	@Column
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	@Column
-	private String postalCode;
-	@Column
-	private String latitude;
-	@Column
-	private String longitude;
-	@Column
-	private Date createdDate;
-	@Column
-	private String createdBy;
-	@Column
-	private Date updatedDate;
-	@Column
-	private String updatedBy;
+	@JsonProperty("authenticationResultCode")
+	private String authenticationResultCode;
+	@JsonProperty("brandLogoUri")
+	private String brandLogoUri;
+	@JsonProperty("copyright")
+	private String copyright;
+	@JsonProperty("resourceSets")
+	private List<ResourceSet> resourceSets = null;
+	@JsonProperty("statusCode")
+	private Integer statusCode;
+	@JsonProperty("statusDescription")
+	private String statusDescription;
+	@JsonProperty("traceId")
+	private String traceId;
+	@JsonIgnore
+	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-	public Coordinates() {
-		super();
+	@JsonProperty("authenticationResultCode")
+	public String getAuthenticationResultCode() {
+		return authenticationResultCode;
 	}
 
-	public Coordinates(String postalCode, String latitude, String longitude, Date createdDate, String createdBy,
-			Date updatedDate, String updatedBy) {
-		super();
-		this.postalCode = postalCode;
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.createdDate = createdDate;
-		this.createdBy = createdBy;
-		this.updatedDate = updatedDate;
-		this.updatedBy = updatedBy;
+	@JsonProperty("authenticationResultCode")
+	public void setAuthenticationResultCode(String authenticationResultCode) {
+		this.authenticationResultCode = authenticationResultCode;
 	}
 
-	@Override
-	public String toString() {
-		return "Coordinates [postalCode=" + postalCode + ", latitude=" + latitude + ", longitude=" + longitude
-				+ ", createdDate=" + createdDate + ", createdBy=" + createdBy + ", updatedDate=" + updatedDate
-				+ ", updatedBy=" + updatedBy + "]";
+	@JsonProperty("brandLogoUri")
+	public String getBrandLogoUri() {
+		return brandLogoUri;
 	}
 
-	public String getPostalCode() {
-		return postalCode;
+	@JsonProperty("brandLogoUri")
+	public void setBrandLogoUri(String brandLogoUri) {
+		this.brandLogoUri = brandLogoUri;
 	}
 
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
+	@JsonProperty("copyright")
+	public String getCopyright() {
+		return copyright;
 	}
 
-	public String getLatitude() {
-		return latitude;
+	@JsonProperty("copyright")
+	public void setCopyright(String copyright) {
+		this.copyright = copyright;
 	}
 
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
+	@JsonProperty("resourceSets")
+	public List<ResourceSet> getResourceSets() {
+		return resourceSets;
 	}
 
-	public String getLongitude() {
-		return longitude;
+	@JsonProperty("resourceSets")
+	public void setResourceSets(List<ResourceSet> resourceSets) {
+		this.resourceSets = resourceSets;
 	}
 
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
+	@JsonProperty("statusCode")
+	public Integer getStatusCode() {
+		return statusCode;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
+	@JsonProperty("statusCode")
+	public void setStatusCode(Integer statusCode) {
+		this.statusCode = statusCode;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	@JsonProperty("statusDescription")
+	public String getStatusDescription() {
+		return statusDescription;
 	}
 
-	public String getCreatedBy() {
-		return createdBy;
+	@JsonProperty("statusDescription")
+	public void setStatusDescription(String statusDescription) {
+		this.statusDescription = statusDescription;
 	}
 
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
+	@JsonProperty("traceId")
+	public String getTraceId() {
+		return traceId;
 	}
 
-	public Date getUpdatedDate() {
-		return updatedDate;
+	@JsonProperty("traceId")
+	public void setTraceId(String traceId) {
+		this.traceId = traceId;
 	}
 
-	public void setUpdatedDate(Date updatedDate) {
-		this.updatedDate = updatedDate;
+	@JsonAnyGetter
+	public Map<String, Object> getAdditionalProperties() {
+		return this.additionalProperties;
 	}
 
-	public String getUpdatedBy() {
-		return updatedBy;
-	}
-
-	public void setUpdatedBy(String updatedBy) {
-		this.updatedBy = updatedBy;
+	@JsonAnySetter
+	public void setAdditionalProperty(String name, Object value) {
+		this.additionalProperties.put(name, value);
 	}
 
 }
