@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 @Entity
 public class PostalCodeDetails {
-	
+
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,7 +31,7 @@ public class PostalCodeDetails {
 	private Date updatedDate;
 	@Column
 	private String updatedBy;
-	
+
 	public PostalCodeDetails() {
 		super();
 	}

@@ -18,9 +18,9 @@ public class PostalCodeCoordinatesRestController {
 
 	@Autowired
 	private PostalCodeDetailsService postalCodeDetailsService;
-	
+
 	@GetMapping(value = "/allPostalCodeDetails", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<PostalCodeDetails> getAllPostalCodeDetails(){
+	public @ResponseBody List<PostalCodeDetails> getAllPostalCodeDetails() {
 		return postalCodeDetailsService.getAllPostalCodeDetails();
 	}
 }
