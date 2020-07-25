@@ -1,5 +1,6 @@
 package com.practice.postalcodeCoordinates.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +14,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "estimatedTotal", "resources" })
-public class ResourceSet {
+public class ResourceSet implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@JsonProperty("estimatedTotal")
 	private Integer estimatedTotal;
 	@JsonProperty("resources")

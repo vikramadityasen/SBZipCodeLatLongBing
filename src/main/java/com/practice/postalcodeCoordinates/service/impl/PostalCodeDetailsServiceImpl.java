@@ -44,7 +44,7 @@ public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 		PostalCodeCoordinate postCodeCrdnt = new PostalCodeCoordinate();
 		for (PostalCodeDetails poDetails : postalCodeDetails) {
 			Coordinates coordinates = bingMapClient.getCoordinate(poDetails.getCity(), poDetails.getPostalCode());
-			logger.debug("Coordinates: {}" + coordinates.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates());
+			System.out.println("Coordinates: {}" + coordinates.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates());
 			
 			List<Coordinates> CoordinateList = Arrays.asList(coordinates);
 			for(Coordinates coordinates2 : CoordinateList) {
@@ -52,6 +52,7 @@ public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 				postCodeCrdnt.setLatitude(coordinates2.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates().get(0));
 				postCodeCrdnt.setLongitude(coordinates2.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates().get(1));
 			}
+			
 			entityManager.persist(postalCodeCoordinateRepository.save(postCodeCrdnt));
 		}
 		return postalCodeDetails;

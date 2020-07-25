@@ -1,5 +1,6 @@
 package com.practice.postalcodeCoordinates.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +15,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "authenticationResultCode", "brandLogoUri", "copyright", "resourceSets", "statusCode",
 		"statusDescription", "traceId" })
-public class Coordinates {
+public class Coordinates implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@JsonProperty("authenticationResultCode")
 	private String authenticationResultCode;
 	@JsonProperty("brandLogoUri")

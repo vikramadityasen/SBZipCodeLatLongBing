@@ -1,5 +1,6 @@
 package com.practice.postalcodeCoordinates.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,8 +13,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "adminDistrict", "countryRegion", "formattedAddress", "locality", "postalCode" })
-public class Address {
+public class Address implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@JsonProperty("adminDistrict")
 	private String adminDistrict;
 	@JsonProperty("countryRegion")
