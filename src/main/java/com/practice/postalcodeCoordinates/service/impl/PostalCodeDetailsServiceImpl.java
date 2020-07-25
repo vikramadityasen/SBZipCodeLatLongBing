@@ -5,12 +5,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.practice.postalcodeCoordinates.client.BingMapClient;
 import com.practice.postalcodeCoordinates.model.Coordinates;
@@ -32,7 +32,6 @@ public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 	
 	@Autowired
 	private PostalCodeCoordinateRepository postalCodeCoordinateRepository;
-
 	
 	@Autowired
 	private BingMapClient bingMapClient;
@@ -44,7 +43,6 @@ public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 		PostalCodeCoordinate postCodeCrdnt = new PostalCodeCoordinate();
 		for (PostalCodeDetails poDetails : postalCodeDetails) {
 			Coordinates coordinates = bingMapClient.getCoordinate(poDetails.getCity(), poDetails.getPostalCode());
-			System.out.println("Coordinates: {}" + coordinates.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates());
 			
 			List<Coordinates> CoordinateList = Arrays.asList(coordinates);
 			for(Coordinates coordinates2 : CoordinateList) {
@@ -52,8 +50,9 @@ public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 				postCodeCrdnt.setLatitude(coordinates2.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates().get(0));
 				postCodeCrdnt.setLongitude(coordinates2.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates().get(1));
 			}
-			
+			System.out.println(postalCodeCoordinateRepository.saveAndFlush(postCodeCrdnt));
 			entityManager.persist(postalCodeCoordinateRepository.save(postCodeCrdnt));
+			entityManager.flush();
 		}
 		return postalCodeDetails;
 	}

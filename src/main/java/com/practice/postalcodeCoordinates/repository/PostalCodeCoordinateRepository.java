@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.practice.postalcodeCoordinates.model.PostalCodeCoordinate;
 
 @Repository
-public interface PostalCodeCoordinateRepository extends JpaRepository<PostalCodeCoordinate, String> {
+public interface PostalCodeCoordinateRepository extends JpaRepository<PostalCodeCoordinate, Integer> {
 
 }
