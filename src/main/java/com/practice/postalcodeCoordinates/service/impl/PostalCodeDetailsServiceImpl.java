@@ -2,6 +2,8 @@ package com.practice.postalcodeCoordinates.service.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import com.practice.postalcodeCoordinates.service.PostalCodeDetailsService;
 
 @Service
 public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
 	private PostalCodeDetailsRepository postalCodeDetailsRepository;
@@ -26,7 +29,7 @@ public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 
 		for (PostalCodeDetails poDetails : postalCodeDetails) {
 			Coordinates coordinates = bingMapClient.getCoordinate(poDetails.getCity(), poDetails.getPostalCode());
-			System.out.println("Coordinates: " + coordinates.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates());
+			logger.debug("Coordinates: {}" + coordinates.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates());
 
 		}
 
