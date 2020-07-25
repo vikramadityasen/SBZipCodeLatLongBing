@@ -13,15 +13,15 @@ public class PostalCodeCoordinate {
 	@Column
 	private String postalCode;
 	@Column
-	private String latitude;
+	private Double latitude;
 	@Column
-	private String longitude;
+	private Double longitude;
 	
 	public PostalCodeCoordinate() {
 		super();
 	}
 
-	public PostalCodeCoordinate(int id, String postalCode, String latitude, String longitude) {
+	public PostalCodeCoordinate(int id, String postalCode, Double latitude, Double longitude) {
 		super();
 		this.id = id;
 		this.postalCode = postalCode;
@@ -51,20 +51,20 @@ public class PostalCodeCoordinate {
 		this.postalCode = postalCode;
 	}
 
-	public String getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(String latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
-	public String getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(String longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
-	
+
 }
