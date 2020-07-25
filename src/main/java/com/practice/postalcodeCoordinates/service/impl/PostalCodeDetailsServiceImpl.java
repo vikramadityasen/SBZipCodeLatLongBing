@@ -1,6 +1,11 @@
 package com.practice.postalcodeCoordinates.service.impl;
 
+import java.util.Arrays;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +24,9 @@ import com.practice.postalcodeCoordinates.service.PostalCodeDetailsService;
 public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
+	@PersistenceContext
+	private EntityManager entityManager;
+	
 	@Autowired
 	private PostalCodeDetailsRepository postalCodeDetailsRepository;
 	
@@ -30,6 +38,7 @@ public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 	private BingMapClient bingMapClient;
 
 	@Override
+	@Transactional
 	public List<PostalCodeDetails> getAllPostalCodeDetails() {
 		List<PostalCodeDetails> postalCodeDetails = postalCodeDetailsRepository.findAll();
 		PostalCodeCoordinate postCodeCrdnt = new PostalCodeCoordinate();
@@ -37,12 +46,14 @@ public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 			Coordinates coordinates = bingMapClient.getCoordinate(poDetails.getCity(), poDetails.getPostalCode());
 			logger.debug("Coordinates: {}" + coordinates.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates());
 			
-			postCodeCrdnt.setPostalCode(coordinates.getResourceSets().get(0).getResources().get(0).getAddress().getPostalCode());
-			postCodeCrdnt.setLatitude(coordinates.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates().get(0));
-			postCodeCrdnt.setLongitude(coordinates.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates().get(1));
-			
+			List<Coordinates> CoordinateList = Arrays.asList(coordinates);
+			for(Coordinates coordinates2 : CoordinateList) {
+				postCodeCrdnt.setPostalCode(coordinates2.getResourceSets().get(0).getResources().get(0).getAddress().getPostalCode());
+				postCodeCrdnt.setLatitude(coordinates2.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates().get(0));
+				postCodeCrdnt.setLongitude(coordinates2.getResourceSets().get(0).getResources().get(0).getGeocodePoints().get(0).getCoordinates().get(1));
+			}
+			entityManager.persist(postalCodeCoordinateRepository.save(postCodeCrdnt));
 		}
-		postalCodeCoordinateRepository.save(postCodeCrdnt);
 		return postalCodeDetails;
 	}
 
