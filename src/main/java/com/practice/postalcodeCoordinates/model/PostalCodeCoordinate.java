@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class PostalCodeCoordinate implements Serializable{
+public class PostalCodeCoordinate implements Serializable {
 
 	/**
 	 * 
@@ -25,7 +25,7 @@ public class PostalCodeCoordinate implements Serializable{
 	private Double latitude;
 	@Column
 	private Double longitude;
-	
+
 	public PostalCodeCoordinate() {
 		super();
 	}
@@ -97,5 +97,5 @@ public class PostalCodeCoordinate implements Serializable{
 			return false;
 		return true;
 	}
-	
+
 }

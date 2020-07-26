@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "type", "coordinates", "calculationMethod", "usageTypes" })
-public class GeocodePoint implements Serializable{
+public class GeocodePoint implements Serializable {
 
 	/**
 	 * 

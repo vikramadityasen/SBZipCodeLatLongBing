@@ -19,5 +19,5 @@ spring:
         format_sql: false
 logging:
   level:
-    org.springframework.web: DEBUG
-    com.poc.crudSpringbootDockerKubernetes: DEBUG
+    org.springframework.web: debug
+    com.practice.postalcodeCoordinates: debug
