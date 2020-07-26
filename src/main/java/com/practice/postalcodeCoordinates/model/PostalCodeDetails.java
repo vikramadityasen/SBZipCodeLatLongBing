@@ -23,42 +23,48 @@ public class PostalCodeDetails implements Serializable {
 	@Column
 	private String postalCode;
 	@Column
-	private String province;
-	@Column
 	private String city;
 	@Column
-	private int areaCode;
+	private String province;
 	@Column
-	private Date createdDate;
+	private String country;
 	@Column
-	private String createdBy;
+	private String isDeleted;
 	@Column
-	private Date updatedDate;
+	private Date createDateTimestamp;
 	@Column
-	private String updatedBy;
+	private Date updateDateTimestamp;
 
 	public PostalCodeDetails() {
 		super();
 	}
 
-	public PostalCodeDetails(String postalCode, String province, String city, int areaCode, Date createdDate,
-			String createdBy, Date updatedDate, String updatedBy) {
+	public PostalCodeDetails(int id, String postalCode, String city, String province, String country, String isDeleted,
+			Date createDateTimestamp, Date updateDateTimestamp) {
 		super();
+		this.id = id;
 		this.postalCode = postalCode;
-		this.province = province;
 		this.city = city;
-		this.areaCode = areaCode;
-		this.createdDate = createdDate;
-		this.createdBy = createdBy;
-		this.updatedDate = updatedDate;
-		this.updatedBy = updatedBy;
+		this.province = province;
+		this.country = country;
+		this.isDeleted = isDeleted;
+		this.createDateTimestamp = createDateTimestamp;
+		this.updateDateTimestamp = updateDateTimestamp;
 	}
 
 	@Override
 	public String toString() {
-		return "PostalCodeDetails [postalCode=" + postalCode + ", province=" + province + ", city=" + city
-				+ ", areaCode=" + areaCode + ", createdDate=" + createdDate + ", createdBy=" + createdBy
-				+ ", updatedDate=" + updatedDate + ", updatedBy=" + updatedBy + "]";
+		return "PostalCodeDetails [id=" + id + ", postalCode=" + postalCode + ", city=" + city + ", province="
+				+ province + ", country=" + country + ", isDeleted=" + isDeleted + ", createDateTimestamp="
+				+ createDateTimestamp + ", updateDateTimestamp=" + updateDateTimestamp + "]";
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getPostalCode() {
@@ -69,14 +75,6 @@ public class PostalCodeDetails implements Serializable {
 		this.postalCode = postalCode;
 	}
 
-	public String getProvince() {
-		return province;
-	}
-
-	public void setProvince(String province) {
-		this.province = province;
-	}
-
 	public String getCity() {
 		return city;
 	}
@@ -85,44 +83,44 @@ public class PostalCodeDetails implements Serializable {
 		this.city = city;
 	}
 
-	public int getAreaCode() {
-		return areaCode;
+	public String getProvince() {
+		return province;
 	}
 
-	public void setAreaCode(int areaCode) {
-		this.areaCode = areaCode;
+	public void setProvince(String province) {
+		this.province = province;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
+	public String getCountry() {
+		return country;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
-	public String getCreatedBy() {
-		return createdBy;
+	public String isDeleted() {
+		return isDeleted;
 	}
 
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
+	public void setDeleted(String isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
-	public Date getUpdatedDate() {
-		return updatedDate;
+	public Date getCreateDateTimestamp() {
+		return createDateTimestamp;
 	}
 
-	public void setUpdatedDate(Date updatedDate) {
-		this.updatedDate = updatedDate;
+	public void setCreateDateTimestamp(Date createDateTimestamp) {
+		this.createDateTimestamp = createDateTimestamp;
 	}
 
-	public String getUpdatedBy() {
-		return updatedBy;
+	public Date getUpdateDateTimestamp() {
+		return updateDateTimestamp;
 	}
 
-	public void setUpdatedBy(String updatedBy) {
-		this.updatedBy = updatedBy;
+	public void setUpdateDateTimestamp(Date updateDateTimestamp) {
+		this.updateDateTimestamp = updateDateTimestamp;
 	}
 
 }
