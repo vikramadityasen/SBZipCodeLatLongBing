@@ -9,9 +9,9 @@ insert into postal_code_details(id, postal_code, city, province, country, is_del
 insert into postal_code_details(id, postal_code, city, province, country, is_deleted, create_date_timestamp, update_date_timestamp) values
 (5,'A0A0A5','NORTHERNBAY','NL','CA','0','2020-02-13 22:40:13','2020-02-13 22:40:13');
 insert into postal_code_details(id, postal_code, city, province, country, is_deleted, create_date_timestamp, update_date_timestamp) values
-(6,'A0A0A6','CLARKESBEACH','NL','CA','0','2020-02-13 22:40:13','2020-02-13 22:40:13');
+(6,'A0A0A6','CLARKES BEACH','NL','CA','0','2020-02-13 22:40:13','2020-02-13 22:40:13');
 insert into postal_code_details(id, postal_code, city, province, country, is_deleted, create_date_timestamp, update_date_timestamp) values
-(7,'A0A0A7','CONCEPTIONHARBOUR','NL','CA','0','2020-02-13 22:40:13','2020-02-13 22:40:13');
+(7,'A0A0A7','CONCEPTION HARBOUR','NL','CA','0','2020-02-13 22:40:13','2020-02-13 22:40:13');
 insert into postal_code_details(id, postal_code, city, province, country, is_deleted, create_date_timestamp, update_date_timestamp) values
 (8,'A0A0A8','HARBOURMAIN','NL','CA','0','2020-02-13 22:40:13','2020-02-13 22:40:13');
 insert into postal_code_details(id, postal_code, city, province, country, is_deleted, create_date_timestamp, update_date_timestamp) values
