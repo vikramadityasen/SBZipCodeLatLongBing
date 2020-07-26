@@ -5,11 +5,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "ca_postal_mstr")
 public class PostalCodeDetails implements Serializable {
 
 	/**
@@ -17,9 +17,6 @@ public class PostalCodeDetails implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Column
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
 	@Column
 	private String postalCode;
 	@Column
@@ -39,10 +36,9 @@ public class PostalCodeDetails implements Serializable {
 		super();
 	}
 
-	public PostalCodeDetails(int id, String postalCode, String city, String province, String country, String isDeleted,
+	public PostalCodeDetails(String postalCode, String city, String province, String country, String isDeleted,
 			Date createDateTimestamp, Date updateDateTimestamp) {
 		super();
-		this.id = id;
 		this.postalCode = postalCode;
 		this.city = city;
 		this.province = province;
@@ -54,17 +50,9 @@ public class PostalCodeDetails implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PostalCodeDetails [id=" + id + ", postalCode=" + postalCode + ", city=" + city + ", province="
+		return "PostalCodeDetails [postalCode=" + postalCode + ", city=" + city + ", province="
 				+ province + ", country=" + country + ", isDeleted=" + isDeleted + ", createDateTimestamp="
 				+ createDateTimestamp + ", updateDateTimestamp=" + updateDateTimestamp + "]";
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getPostalCode() {
