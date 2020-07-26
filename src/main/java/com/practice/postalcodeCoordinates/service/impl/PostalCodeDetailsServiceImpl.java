@@ -36,9 +36,7 @@ public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 		List<PostalCodeCoordinate> postalCodeCoordinates = new ArrayList<PostalCodeCoordinate>();
 		try {
 			for (PostalCodeDetails poDetails : postalCodeDetails) {
-				String ciyName = poDetails.getCity();
-				String city = ciyName.replaceAll("\\s", "");
-				Coordinates coordinates = bingMapClient.getCoordinate(city, poDetails.getPostalCode());
+				Coordinates coordinates = bingMapClient.getCoordinate(poDetails.getCity().replaceAll("\\s", ""), poDetails.getPostalCode());
 
 				List<Coordinates> CoordinateList = Arrays.asList(coordinates);
 				for (Coordinates coordinates2 : CoordinateList) {
