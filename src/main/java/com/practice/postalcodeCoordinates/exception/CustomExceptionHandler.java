@@ -31,14 +31,14 @@ public class CustomExceptionHandler {
 	}
 
 	/**
-	 * Handle user not found exception
+	 * Handle record not found exception
 	 * 
 	 * @param ex
 	 * @param request
 	 * @return
 	 */
 	@ExceptionHandler(RecordNotFoundException.class)
-	public final ResponseEntity<Object> handleUserNotFoundException(RecordNotFoundException ex, WebRequest request) {
+	public final ResponseEntity<Object> handleRecordNotFoundException(RecordNotFoundException ex, WebRequest request) {
 		List<String> details = new ArrayList<>();
 		details.add(ex.getLocalizedMessage());
 		ErrorResponse error = new ErrorResponse("Record Not Found", details);

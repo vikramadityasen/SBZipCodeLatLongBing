@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.practice.postalcodeCoordinates.client.BingMapClient;
+import com.practice.postalcodeCoordinates.exception.RecordNotFoundException;
 import com.practice.postalcodeCoordinates.model.Coordinates;
 import com.practice.postalcodeCoordinates.model.PostalCodeCoordinate;
 import com.practice.postalcodeCoordinates.model.PostalCodeDetails;
@@ -58,8 +59,9 @@ public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 				}
 			}
 		} catch (Exception e) {
-			String message = String.format("Record not available or invalid postal code: %s", e.getMessage());
+			String message = String.format("Duplicate or invalid postal code: %s", e.getMessage());
 			logger.error(message);
+			throw new RecordNotFoundException(message);
 		}
 		return postalCodeDetails;
 	}

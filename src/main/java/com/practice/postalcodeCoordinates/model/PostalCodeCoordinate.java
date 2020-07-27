@@ -19,7 +19,7 @@ public class PostalCodeCoordinate implements Serializable {
 	@Column(unique = true)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Column
+	@Column(unique = true)
 	private String postalCode;
 	@Column
 	private Double latitude;
