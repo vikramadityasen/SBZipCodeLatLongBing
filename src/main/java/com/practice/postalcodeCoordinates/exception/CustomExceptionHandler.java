@@ -11,7 +11,6 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.practice.postalcodeCoordinates.model.ErrorResponse;
 
-@SuppressWarnings({ "unchecked", "rawtypes" })
 @ControllerAdvice
 public class CustomExceptionHandler {
 
@@ -27,7 +26,7 @@ public class CustomExceptionHandler {
 		List<String> details = new ArrayList<>();
 		details.add(ex.getLocalizedMessage());
 		ErrorResponse error = new ErrorResponse("Server Error", details);
-		return new ResponseEntity(error, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	/**
@@ -42,6 +41,6 @@ public class CustomExceptionHandler {
 		List<String> details = new ArrayList<>();
 		details.add(ex.getLocalizedMessage());
 		ErrorResponse error = new ErrorResponse("Record Not Found", details);
-		return new ResponseEntity(error, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 }

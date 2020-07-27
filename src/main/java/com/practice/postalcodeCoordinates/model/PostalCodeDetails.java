@@ -50,9 +50,9 @@ public class PostalCodeDetails implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PostalCodeDetails [postalCode=" + postalCode + ", city=" + city + ", province="
-				+ province + ", country=" + country + ", isDeleted=" + isDeleted + ", createDateTimestamp="
-				+ createDateTimestamp + ", updateDateTimestamp=" + updateDateTimestamp + "]";
+		return "PostalCodeDetails [postalCode=" + postalCode + ", city=" + city + ", province=" + province
+				+ ", country=" + country + ", isDeleted=" + isDeleted + ", createDateTimestamp=" + createDateTimestamp
+				+ ", updateDateTimestamp=" + updateDateTimestamp + "]";
 	}
 
 	public String getPostalCode() {

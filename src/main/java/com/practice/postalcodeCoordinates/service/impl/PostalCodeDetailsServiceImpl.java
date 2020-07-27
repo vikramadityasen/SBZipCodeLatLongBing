@@ -34,7 +34,7 @@ public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 	@Override
 	public List<PostalCodeDetails> getAllPostalCodeDetails() {
 		List<PostalCodeDetails> postalCodeDetails = postalCodeDetailsRepository.findAll();
-		List<PostalCodeCoordinate> postalCodeCoordinates = new ArrayList<PostalCodeCoordinate>();
+		List<PostalCodeCoordinate> postalCodeCoordinates = new ArrayList<>();
 		try {
 			for (PostalCodeDetails poDetails : postalCodeDetails) {
 				Coordinates coordinates = bingMapClient.getCoordinate(poDetails.getCity().replaceAll("\\s", ""),
@@ -54,8 +54,8 @@ public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 				}
 
 				logger.debug("Coordinates: {}", postalCodeCoordinates.get(0));
-				if(postalCodeCoordinates.get(0).getPostalCode()==null || !postalCodeCoordinates.isEmpty()) {
-				postalCodeCoordinateRepository.saveAll(postalCodeCoordinates);
+				if (postalCodeCoordinates.get(0).getPostalCode() == null || !postalCodeCoordinates.isEmpty()) {
+					postalCodeCoordinateRepository.saveAll(postalCodeCoordinates);
 				}
 			}
 		} catch (Exception e) {
