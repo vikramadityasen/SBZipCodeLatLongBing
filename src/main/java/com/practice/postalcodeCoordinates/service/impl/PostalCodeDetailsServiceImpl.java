@@ -53,7 +53,9 @@ public class PostalCodeDetailsServiceImpl implements PostalCodeDetailsService {
 				}
 
 				logger.debug("Coordinates: {}", postalCodeCoordinates.get(0));
+				if(postalCodeCoordinates.get(0).getPostalCode()==null || !postalCodeCoordinates.isEmpty()) {
 				postalCodeCoordinateRepository.saveAll(postalCodeCoordinates);
+				}
 			}
 		} catch (Exception e) {
 			String message = String.format("Record not available or invalid postal code: %s", e.getMessage());

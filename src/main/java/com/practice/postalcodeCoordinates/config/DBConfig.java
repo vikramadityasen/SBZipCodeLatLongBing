@@ -19,9 +19,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class DBConfig {
 
-	@Value("${spring.datasource.driverClassName}")
-	private String springDatasourceDriverClassName;
-
 	@Value("${spring.datasource.url}")
 	private String springDatasourceUrl;
 
@@ -37,7 +34,6 @@ public class DBConfig {
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(springDatasourceDriverClassName);
 		dataSource.setUrl(springDatasourceUrl);
 		dataSource.setUsername(springDatasourceUsername);
 		dataSource.setPassword(springDatasourcePassword);
